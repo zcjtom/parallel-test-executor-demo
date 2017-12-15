@@ -7,7 +7,7 @@ for (int i = 0; i < splits.size(); i++) {
       checkout scm
       writeFile file: (split.includes ? 'inclusions.txt' : 'exclusions.txt'), text: split.list.join("\n")
       writeFile file: (split.includes ? 'exclusions.txt' : 'inclusions.txt'), text: ''
-      sh 'mvn -s /tmp/settings.xml -B clean test -Dmaven.test.failure.ignore'
+      sh 'mvn -s settings.xml -B clean test -Dmaven.test.failure.ignore'
       junit 'target/surefire-reports/*.xml'
     }
   }
